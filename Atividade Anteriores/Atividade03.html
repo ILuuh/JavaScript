@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+
+<body>
+    <script>
+        function multiploTresECinco() {
+            let n1 = prompt("Digite um número inteiro: ");
+            n1 = parseInt(n1);
+            let multiploAmbos = (n1 % 3 == 0 && n1 % 5 == 0) ? console.log(`${n1} é multiplo de 3 e 5`) : console.log(`${n1} não é multiplo de 3 e 5`);
+
+            let n2 = prompt("Digite um número inteiro: ");
+            n2 = parseInt(n2);
+            let multiploTrês = (n2 % 3 == 0) ? console.log(`${n2} é multiplo de 3`) : console.log(`${n2} não e multiplo de 3`);
+
+            let n3 = prompt("Digite um número inteiro: ");
+            n3 = parseInt(n3);
+            let multiploCinco = (n3 % 5 == 0) ? console.log(`${n3} é multiplo de 5`) : console.log(`${n3} não e multiplo de 5`);
+
+            let n4 = prompt("Digite um número inteiro: ");
+            n4 = parseInt(n4);
+            let naoMultiplo = (n4 % 3 == 0 && n1 % 5 == 0) ? console.log(`${n4} é multiplo de 3 e 5`) : console.log(`${n4} não é multiplo de 3 e 5`);
+        }
+
+        multiploTresECinco();
+    </script>
+</body>
+
+</html>

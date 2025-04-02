@@ -1,0 +1,47 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    transition: background 0.5s;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+#vermelho{
+    background-color: red;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#azul{
+    background-color: blue;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#verde{
+    background-color: green;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#resetar{
+    background-color: gray;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+form{
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#enviar {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#resultado {
+    margin-top: 10px;
+}

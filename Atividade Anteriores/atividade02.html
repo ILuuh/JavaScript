@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 02</title>
+</head>
+<body>
+    
+    <script>
+        function doisnumeros() {
+            let n1 = prompt("Digite o primeiro número: ");
+            n1 = parseInt(n1);
+            
+            let n2 = prompt("Digite o segundo número: ");
+            n2 = parseInt(n2);
+
+            let soma = n1 + n2;
+            let subtracao = n1 - n2;
+            let multiplicacao = n1 * n2;
+            let divisao = n1 / n2;
+            let modulo = n1 % n2;
+
+            console.log(soma);
+            console.log(subtracao);
+            console.log(multiplicacao);
+            console.log(divisao);
+            console.log(modulo);
+
+            if(n1 === n2){
+                console.log("Os número apresentados são iguais");
+            }else{
+                console.log("Os números apresentados são diferentes");
+            }
+
+            if( n1 > n2){
+                console.log(`O primeiro número ${n1} é maior que o segundo número ${n2}`);
+            }else if (n1 === n2){
+                console.log(`O primeiro número ${n1} é igual que o segundo número ${n2}`);
+            }else{
+                console.log(`O primeiro número ${n1} é menor que o segundo número ${n2}`);
+            }
+
+            if(n1 && n2 > 0){
+                console.log("Os dois números são positivos");
+            }else {
+                console.log("Os dois números são negativos");
+            }
+
+            if(n1 > 10 || n2 > 10){
+                console.log(`Pelo menos um dos dois números são maiores que 10`);
+            }else {
+                console.log("Nenhum dos números são maiores que 10");
+            }
+        }
+        doisnumeros();
+    </script>
+</body>
+</html>
