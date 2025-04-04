@@ -29,11 +29,11 @@ function verificar() {
     }
     if (chute > numeroSecreto) {
         document.getElementById('mensagem').style.color = 'black';
-        document.getElementById('mensagem').innerHTML = "O número sorteiado é menor";
+        document.getElementById('mensagem').innerHTML = "O número sorteado é menor";
     }
     if (chute < numeroSecreto) {
         document.getElementById('mensagem').style.color = 'black';
-        document.getElementById('mensagem').innerHTML = "O número sorteiado é maior";
+        document.getElementById('mensagem').innerHTML = "O número sorteado é maior";
     }
 }
 
