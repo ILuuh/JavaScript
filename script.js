@@ -1,22 +1,47 @@
-document.getElementById("converte").addEventListener("click", converter);
+let numeroSecreto = "";
+let tentativas = 0;
 
-function converter() {
-    const celsius = document.getElementById("inputCelsius").value;
-    const fahrenheit = document.getElementById("inputFahrenheit").value;
+function iniciarJogo() {
+    numeroSecreto = Math.floor(Math.random() * 100) + 1;
+    tentativas = 0;
+    numeroSecreto = parseInt(numeroSecreto);
 
-    if (celsius != "" & fahrenheit == "") {
+    document.getElementById('inputChute'). value = '';
+    document.getElementById('mensagem').innerHTML = '';
+    document.getElementById('btn-reiniciar').style.display = "none";
+}
 
-        const resultado = document.getElementById("resultado");
-        inputCelsius = parseFloat(celsius);
-        var conversao = (inputCelsius * 9 / 5) + 32;
-        resultado.innerHTML = `${celsius}°C equivalem a ${conversao.toFixed(2)}°F.`;
+function verificar() {
+    let chute = document.getElementById('inputChute').value;
+    chute = parseInt(chute);
+    tentativas++;
+    
+    if (isNaN(chute) || chute < 1 || chute > 100) {
+        document.getElementById('mensagem').innerHTML = "Por favor digite um número no intervalo de 1 à 100";
+        document.getElementById('mensagem').style.color = 'red';
+        tentativas = 0;
+        return;
     }
-    if (fahrenheit != "" & celsius == "") {
-
-        const resultado = document.getElementById("resultado");
-        inputFahrenheit = parseFloat(fahrenheit);
-        var conversao = (inputFahrenheit - 32) * 5 / 9;
-        resultado.innerHTML = `${fahrenheit}°F equivalem a ${conversao.toFixed(2)}°C.`;
+    if (chute === numeroSecreto) {
+        document.getElementById('mensagem').style.color = 'black';
+        document.getElementById('mensagem').innerHTML = `Parabéns você acerto o número sorteado 🎉 ${numeroSecreto}, você tentou ${tentativas} vezes.`;
+        document.getElementById('btn-reiniciar').style.display = "inline-block";
+    }
+    if (chute > numeroSecreto) {
+        document.getElementById('mensagem').style.color = 'black';
+        document.getElementById('mensagem').innerHTML = "O número sorteiado é menor";
+    }
+    if (chute < numeroSecreto) {
+        document.getElementById('mensagem').style.color = 'black';
+        document.getElementById('mensagem').innerHTML = "O número sorteiado é maior";
     }
 }
-converter();
+
+function reiniciarJogo() {
+    iniciarJogo();
+    
+}
+
+document.getElementById('btn-tentar').addEventListener('click', verificar);
+document.getElementById('btn-reiniciar').addEventListener('click', reiniciarJogo);
+iniciarJogo();

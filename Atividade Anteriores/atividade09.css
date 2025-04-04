@@ -8,12 +8,16 @@ body {
 }
 
 main {
+    width: 30rem;
+    height: 30rem;
+    background-color: rgb(245, 245, 245);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    border: 1px solid black;
 }
 
 h1 {
@@ -26,17 +30,7 @@ p {
     font-size: large;
 }
 
-#btn-tentar {
-    width: 10rem;
-    height: 2rem;
-    background-color: rgb(10, 185, 45);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-#btn-reiniciar {
+#converte {
     width: 10rem;
     height: 2rem;
     background-color: rgb(10, 185, 45);
