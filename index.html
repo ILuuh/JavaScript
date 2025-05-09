@@ -4,21 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Adivinhação</title>
+    <title>Validação de Formulário</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <main>
-        <h1>🎯 Jogo de Adivinha</h1>
-            <p>Digite um número de 1 a 100 e adivinhe o número que foi sorteiado!</p>
-            <input type="number" id="inputChute" placeholder="Ex: 25">
-        <button id="btn-tentar">Tentar</button>
-        <p id="mensagem"></p>
-        <button id="btn-reiniciar">Jogar novamente</button>
-    </main>
+    <form action="" method="get" id="forms">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
 
-</body> 
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email">
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha">
+
+        <label for="confirmSenha">Confirmar Senha:</label>
+        <input type="password" name="confirmSenha" id="confirmSenha">
+
+        <button type="submit">Cadastrar</button>
+
+        <p id="mensagem"></p>
+    </form>
+
+
+</body>
 
 </html>

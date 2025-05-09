@@ -1,47 +1,69 @@
-let numeroSecreto = "";
-let tentativas = 0;
+document.getElementById('forms').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-function iniciarJogo() {
-    numeroSecreto = Math.floor(Math.random() * 100) + 1;
-    tentativas = 0;
-    numeroSecreto = parseInt(numeroSecreto);
+    // Campos
+    const nome = document.getElementById('nome');
+    const email = document.getElementById('email');
+    const senha = document.getElementById('senha');
+    const confirmSenha = document.getElementById('confirmSenha');
+    const mensagem = document.getElementById('mensagem');
 
-    document.getElementById('inputChute'). value = '';
-    document.getElementById('mensagem').innerHTML = '';
-    document.getElementById('btn-reiniciar').style.display = "none";
-}
+    let erros = [];
 
-function verificar() {
-    let chute = document.getElementById('inputChute').value;
-    chute = parseInt(chute);
-    tentativas++;
-    
-    if (isNaN(chute) || chute < 1 || chute > 100) {
-        document.getElementById('mensagem').innerHTML = "Por favor digite um número no intervalo de 1 à 100";
-        document.getElementById('mensagem').style.color = 'red';
-        tentativas = 0;
-        return;
+    // Reset estilos
+    [nome, email, senha, confirmSenha].forEach(campo => {
+        campo.style.borderColor = "#ccc";
+    });
+
+    mensagem.textContent = "";
+    mensagem.style.color = "red"; // padrão para erro
+
+    // Validações
+    if (nome.value.trim() === "") {
+        erros.push("Por favor insira um nome.");
+        nome.style.borderColor = "red";
+    } else if (nome.value.trim().length < 3) {
+        erros.push("Por favor insira um nome com pelo menos 3 caracteres.");
+        nome.style.borderColor = "red";
+    } else {
+        nome.style.borderColor = "green";
     }
-    if (chute === numeroSecreto) {
-        document.getElementById('mensagem').style.color = 'black';
-        document.getElementById('mensagem').innerHTML = `Parabéns você acerto o número sorteado 🎉 ${numeroSecreto}, você tentou ${tentativas} vezes.`;
-        document.getElementById('btn-reiniciar').style.display = "inline-block";
-    }
-    if (chute > numeroSecreto) {
-        document.getElementById('mensagem').style.color = 'black';
-        document.getElementById('mensagem').innerHTML = "O número sorteado é menor";
-    }
-    if (chute < numeroSecreto) {
-        document.getElementById('mensagem').style.color = 'black';
-        document.getElementById('mensagem').innerHTML = "O número sorteado é maior";
-    }
-}
 
-function reiniciarJogo() {
-    iniciarJogo();
-    
-}
+    if (!email.value.includes('@') || !email.value.includes('.')) {
+        erros.push('Por favor insira um email válido.');
+        email.style.borderColor = "red";
+    } else {
+        email.style.borderColor = "green";
+    }
 
-document.getElementById('btn-tentar').addEventListener('click', verificar);
-document.getElementById('btn-reiniciar').addEventListener('click', reiniciarJogo);
-iniciarJogo();
+    if (senha.value === "") {
+        erros.push('Por favor insira uma senha.');
+        senha.style.borderColor = "red";
+    } else if (senha.value.length < 6) {
+        erros.push("A senha precisa ter pelo menos 6 caracteres.");
+        senha.style.borderColor = "red";
+    } else {
+        senha.style.borderColor = "green";
+    }
+
+    if (confirmSenha.value !== senha.value || confirmSenha.value === "") {
+        erros.push('As senhas não estão iguais.');
+        confirmSenha.style.borderColor = "red";
+    } else {
+        confirmSenha.style.borderColor = "green";
+    }
+
+    if (erros.length > 0) {
+        mensagem.innerHTML = erros.join("<br>");
+        mensagem.style.color = "red";
+    } else {
+        mensagem.innerHTML = "Cadastro realizado com sucesso!";
+        mensagem.style.color = "green";
+
+        // Opcional: limpar campos após sucesso
+        [nome, email, senha, confirmSenha].forEach(campo => {
+            campo.value = "";
+            campo.style.borderColor = "#ccc";
+        });
+    }
+});
