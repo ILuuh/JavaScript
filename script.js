@@ -1,69 +1,47 @@
 document.getElementById('forms').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // Campos
     const nome = document.getElementById('nome');
-    const email = document.getElementById('email');
-    const senha = document.getElementById('senha');
-    const confirmSenha = document.getElementById('confirmSenha');
+    const preco = document.getElementById('preco');
+    const categoria = document.getElementById('categoria');
+    const descricao = document.getElementById('descricao');
     const mensagem = document.getElementById('mensagem');
 
+    const precoValor = parseFloat(preco.value);
+    
     let erros = [];
 
-    // Reset estilos
-    [nome, email, senha, confirmSenha].forEach(campo => {
-        campo.style.borderColor = "#ccc";
-    });
-
     mensagem.textContent = "";
-    mensagem.style.color = "red"; // padrão para erro
+    mensagem.style.color = "red";
 
-    // Validações
     if (nome.value.trim() === "") {
         erros.push("Por favor insira um nome.");
-        nome.style.borderColor = "red";
     } else if (nome.value.trim().length < 3) {
         erros.push("Por favor insira um nome com pelo menos 3 caracteres.");
-        nome.style.borderColor = "red";
-    } else {
-        nome.style.borderColor = "green";
     }
 
-    if (!email.value.includes('@') || !email.value.includes('.')) {
-        erros.push('Por favor insira um email válido.');
-        email.style.borderColor = "red";
-    } else {
-        email.style.borderColor = "green";
+    if (isNaN(precoValor) || preco.value.trim() === "") {
+        erros.push("Por favor insira um valor de preço.");
     }
 
-    if (senha.value === "") {
-        erros.push('Por favor insira uma senha.');
-        senha.style.borderColor = "red";
-    } else if (senha.value.length < 6) {
-        erros.push("A senha precisa ter pelo menos 6 caracteres.");
-        senha.style.borderColor = "red";
-    } else {
-        senha.style.borderColor = "green";
+    if (categoria.value === "0" || categoria.value === "") {
+        erros.push("Por favor selecione a categoria correspondente ao produto.");
     }
 
-    if (confirmSenha.value !== senha.value || confirmSenha.value === "") {
-        erros.push('As senhas não estão iguais.');
-        confirmSenha.style.borderColor = "red";
-    } else {
-        confirmSenha.style.borderColor = "green";
+    if (descricao.value.trim() !== "" && descricao.value.trim().length < 10) {
+        erros.push("Por favor insira uma descrição com pelo menos 10 caracteres.");
     }
 
     if (erros.length > 0) {
         mensagem.innerHTML = erros.join("<br>");
-        mensagem.style.color = "red";
     } else {
         mensagem.innerHTML = "Cadastro realizado com sucesso!";
         mensagem.style.color = "green";
 
-        // Opcional: limpar campos após sucesso
-        [nome, email, senha, confirmSenha].forEach(campo => {
-            campo.value = "";
-            campo.style.borderColor = "#ccc";
-        });
+        // Limpar os campos
+        nome.value = "";
+        preco.value = "";
+        categoria.value = "0";
+        descricao.value = "";
     }
 });
